@@ -20,8 +20,61 @@
 
     </head>
     <body>
-        Hello World
+       <div class="row-fluid">
+	       	<div class="span3"> 
+		       	
+		       	  <label>Forms 1</label>
+		       	  <input name="forms1" type="text" placeholder="Type something…">
+	       	</div>
+	       	<div class="span3"> 
+		       	
+		       	  <label>Forms 2</label>
+		       	  <input name="forms2" type="text" placeholder="Type something…">
+	       	</div>
+	       	<div class="span3"> 
+		       	
+		       	  <label>Technique</label>
+		       	  <input name="techniques" type="text" placeholder="Type something…">
+	       	</div>
+	       	<div class="span3"> 
+		       	
+		       	  <label> Reading </label>
+		       	  <input name="reading" type="text" placeholder="Type something…">
+	       	</div>
+	   </div>
+	   
+	   
+	   
+	   
+	   
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    
+    
+    <script>
+    
+    
+   
+    
+  $(function() {
+    var forms1Data = [
+       
+      "Throne",
+      "Sword",
+      "Shield",
+      "Crown",
+      "Battleship"
+      
+    ];
+    
+    $( "input[name=forms1]" ).autocomplete({
+      source: forms1Data
+    });
+  });
+  </script>
+    
+    
+    
+    
     </body>
 </html>
