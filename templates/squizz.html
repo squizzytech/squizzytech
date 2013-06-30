@@ -20,26 +20,28 @@
 
     </head>
     <body>
+    <div class="container">
+    	
        <div class="row-fluid">
 	       	<div class="span3"> 
 		       	
 		       	  <label>Forms 1</label>  
-		       	  <input name="forms1" data-provide="typeahead" type="text" placeholder="Type something…">
+		       	  <input name="forms1" class="input-150" data-provide="typeahead" type="text" placeholder="Type something…">
 	       	</div>
 	       	<div class="span3"> 
 		       	
 		       	  <label>Forms 2</label>
-		       	  <input name="forms2" type="text" placeholder="Type something…">
+		       	  <input name="forms2" class="input-150" type="text" placeholder="Type something…">
 	       	</div>
 	       	<div class="span3"> 
 		       	
 		       	  <label>Technique</label>
-		       	  <input name="techniques" type="text" placeholder="Type something…">
+		       	  <input name="techniques" class="input-150" type="text" placeholder="Type something…">
 	       	</div>
 	       	<div class="span3"> 
 		       	
 		       	  <label> Reading </label>
-		       	  <input name="reading" type="text" placeholder="Type something…">
+		       	  <input name="reading" class="input-150" type="text" placeholder="Type something…">
 	       	</div>
 	       	
 	   </div>
@@ -47,38 +49,52 @@
      <a href="#" name="puzzbuzz" class="btn btn-success"> <i class="icon-puzzle-piece"></i></a>
 	   
      <div name="results"></div>
-
+    </div>
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
   <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
   <script> 
     $(function() {
-      var forms1object = [  
-        {name: "Throne", list:["chair", "king", "sovereign", "queen"]},
-        {name: "Sword", list:["knife", "cricket bat", "rake", "drumstick"]},
-        {name: "Shield", list:["chair", "king", "sovereign", "queen"]},
-        {name: "Crown", list:["chair", "king", "sovereign", "queen"]},
-        {name: "Battleship", list:["chair", "king", "sovereign", "queen"]}  
-      ];
-      var forms1Data = []
-      $.each(forms1object, function(index,obj){
-      	forms1Data.push(obj.name)
-      });
-       	
-      $( "input[name=forms1]" ).typeahead({
-        source: forms1Data
-      });
-      
-      $("a[name=puzzbuzz]").click(function(e){
-  	var objectName = $( "input[name=forms1]" ).val() 
-      })
-      
-      
+	      var forms1object = [  
+	        {name: "Throne", list:["chair", "king", "sovereign", "queen"]},
+	        {name: "Sword", list:["knife", "cricket bat", "rake", "drumstick"]},
+	        {name: "Shield", list:["chair", "king", "sovereign", "queen"]},
+	        {name: "Crown", list:["chair", "king", "sovereign", "queen"]},
+	        {name: "Battleship", list:["chair", "king", "sovereign", "queen"]}  
+	        ];
+	      var forms1Data = []
+	      $.each(forms1object, function(index,obj){
+	      	forms1Data.push(obj.name)
+	      });
+	       	
+	      $( "input[name=forms1]" ).typeahead({
+	        source: forms1Data
+	      });
+	      
+	      var getRandomInt = function (min, max) {
+		      	return Math.floor(Math.random() * (max - min + 1)) + min;
+		   };
+
+	      
+	      
+	      $("a[name=puzzbuzz]").click(function(e){
+	      	e.preventDefault();
+		      var objectName = $( "input[name=forms1]" ).val();
+		      var object = _.findWhere(forms1object,{name:objectName})
+		      var index = getRandomInt(0,object.list.length-1)
+		      
+		      $("div[name=results]").empty()		
+		        $("div[name=results]").append(object.list[index]+"<br>")
+		      // $.each(object.list, function(index,listItem){
+			  //    $("div[name=results]").append(listItem+"<br>")		
+			  // });
+			  
+	      });
     });
   </script>
     
  
->>>>>>> 6f8445f0c53d94a46de6a91f8df17bce015337d1
     </body>
 </html>
+<!-- brackets = function, curly brackets = parameters, square brackets = lists , underscore accesses library  -->
